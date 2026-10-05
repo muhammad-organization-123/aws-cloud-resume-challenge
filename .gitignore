@@ -1,0 +1,24 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+
+# Local Terraform configuration and generated plans
+*.tfvars
+*.tfvars.json
+*.tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Generated deployment artifacts
+terraform/lambda/func.zip 
+
+# Local files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
