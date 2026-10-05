@@ -1,0 +1,19 @@
+name: Basic CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hello:
+    name: Print a message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Print a message
+        run: echo "Hello from my GitHub Actions workflow!"
