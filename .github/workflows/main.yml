@@ -5,8 +5,6 @@ name: Deploy website
     branches: [main]
     paths:
       - 'terraform/assets/**'
-      - 'terraform/outputs.tf'
-      - '.github/workflows/main.yml'
   workflow_dispatch:
 
 permissions:
@@ -23,17 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::458479371105:role/GitHubAction-AssumeRoleWithAction
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Read website settings from Terraform outputs
         id: website
