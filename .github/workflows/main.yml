@@ -5,6 +5,9 @@ name: Deploy website
     branches: [main]
     paths:
       - 'terraform/assets/**'
+      - 'terraform/outputs.tf'
+      - '.github/workflows/main.yml'
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -16,6 +19,7 @@ env:
 jobs:
   deploy:
     name: Deploy website to S3
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
